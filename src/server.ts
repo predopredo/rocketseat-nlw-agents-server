@@ -25,7 +25,7 @@ app.get('/health', () => {
 
 app.register(getRoomsRoute);
 
-app.listen({ port: env.PORT }).then(() => {
+app.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
   // biome-ignore lint/suspicious/noConsole: dev logs
   console.log(`Server is running on port ${env.PORT}`);
 });
