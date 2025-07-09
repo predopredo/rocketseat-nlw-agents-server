@@ -1,8 +1,8 @@
-import { reset, seed } from 'drizzle-seed';
-import { db, sql } from './connection.ts';
-import { schema } from './schema/index.ts';
+import { reset, seed } from 'drizzle-seed'
+import { db, sql } from './connection.ts'
+import { schema } from './schema/index.ts'
 
-await reset(db, schema);
+await reset(db, schema)
 await seed(db, schema).refine((faker) => ({
   rooms: {
     count: 20,
@@ -10,9 +10,19 @@ await seed(db, schema).refine((faker) => ({
       name: faker.companyName(),
       description: faker.loremIpsum(),
     },
+    with: {
+      questions: 1,
+    },
   },
-}));
-await sql.end();
+  questions: {
+    count: 20,
+    columns: {
+      question: faker.loremIpsum(),
+      answer: faker.loremIpsum(),
+    },
+  },
+}))
+await sql.end()
 
 // biome-ignore lint/suspicious/noConsole: dev logs
-console.log('Seeded database');
+console.log('Seeded database')
