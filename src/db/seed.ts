@@ -5,7 +5,7 @@ import { schema } from './schema/index.ts'
 await reset(db, schema)
 await seed(db, schema).refine((faker) => ({
   rooms: {
-    count: 20,
+    count: 5,
     columns: {
       name: faker.companyName(),
       description: faker.loremIpsum(),
@@ -15,7 +15,7 @@ await seed(db, schema).refine((faker) => ({
     },
   },
   questions: {
-    count: 20,
+    count: 5,
     columns: {
       question: faker.loremIpsum(),
       answer: faker.loremIpsum(),

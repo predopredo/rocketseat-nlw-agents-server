@@ -5,7 +5,7 @@ import { schema } from '../../db/schema/index.ts'
 
 export const getRoomsRoute: FastifyPluginCallbackZod = (app) => {
   const { rooms, questions } = schema
-
+  // TODO: add limit and offset
   app.get('/rooms', async () => {
     const results = await db
       .select({
