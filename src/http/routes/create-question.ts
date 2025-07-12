@@ -14,7 +14,7 @@ export const createQuestionRoute: FastifyPluginCallbackZod = (app) => {
           roomId: z.string(),
         }),
         body: z.object({
-          question: z.string().min(20),
+          question: z.string().min(10),
         }),
       },
     },
