@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1751998553653,
-      "tag": "0000_happy_nightcrawler",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1752099318045,
-      "tag": "0001_premium_blur",
+      "when": 1752446953216,
+      "tag": "0000_medical_black_queen",
       "breakpoints": true
     }
   ]
