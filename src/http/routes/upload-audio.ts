@@ -28,8 +28,6 @@ export const uploadAudioRoute: FastifyPluginCallbackZod = (app) => {
       const transcript = await transcribeAudio(base64Audio, audio.mimetype)
       const embeddings = await generateEmbeddings(transcript)
 
-      // biome-ignore lint/suspicious/noConsole: yes
-      console.log(roomId, transcript)
       const result = await db
         .insert(schema.audioChunks)
         .values({
