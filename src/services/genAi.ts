@@ -46,3 +46,40 @@ export const generateEmbeddings = async (text: string) => {
 
   return result.embeddings[0].values
 }
+
+export const generateAnswer = async (
+  question: string,
+  transcripts: string[]
+) => {
+  const context = transcripts.join('\n\n')
+
+  const prompt = `
+  You are a helpful assistant that can answer questions based on the context provided.
+  Answer the provided question based on the context provided.
+
+  CONTEXT:
+  ${context}
+
+  QUESTION:
+  ${question}
+
+  Instructions:
+  - Answer the question based on the context provided.
+  - Use only information from the context to answer the question.
+  - Answer in brazilian portuguese, in a concise, accurate and natural way.
+  - If the question is not related to the context, say that you don't know.
+  - Mention parts of the context that are relevant to the question if appropriate.
+  - If you mention the context, use the term "class content" to refer to it.
+  `.trim()
+
+  const result = await gemini.models.generateContent({
+    model,
+    contents: [{ text: prompt }],
+  })
+
+  if (!result?.text) {
+    throw new Error('Failed to generate answer')
+  }
+
+  return result.text
+}
